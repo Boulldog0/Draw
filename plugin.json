@@ -1,0 +1,15 @@
+{
+    "id": "draw",
+    "name": "Draw",
+    "description": "Draw plugin for azuriom",
+    "version": "1.0.0",
+    "url": "https://discord.gg/yFpkrwebnQ",
+    "authors": [
+        "Boulldogo"
+    ],
+    "azuriom_api": "1.1.0",
+    "providers": [
+        "\\Azuriom\\Plugin\\Draw\\Providers\\DrawServiceProvider",
+        "\\Azuriom\\Plugin\\Draw\\Providers\\RouteServiceProvider"
+    ]
+}
