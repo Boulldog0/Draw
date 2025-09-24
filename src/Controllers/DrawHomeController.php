@@ -18,9 +18,14 @@ class DrawHomeController extends Controller
             ->orderByDesc('created_at')
             ->get();
 
-        $userId = Auth::user()->id;
-        $entries = DrawEntries::where('user_id', $userId)->get();
-        $winners = DrawWinners::get()->groupBy('draw_id');
+        $entries = collect();
+        $winners = collect();
+
+        if(Auth::user()) {
+            $userId = Auth::user()->id;
+            $entries = DrawEntries::where('user_id', $userId)->get();
+            $winners = DrawWinners::get()->groupBy('draw_id');
+        }
 
         return view('draw::index', [
             'activeDraws' => $activeDraws,

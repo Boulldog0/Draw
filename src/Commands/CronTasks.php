@@ -31,7 +31,6 @@ class CronTasks extends Command
             Setting::updateSettings([
                 'draw.cron_activated' => true,
             ]);
-            Setting::save();
         }
 
         $draws = Draw::where('closed', false)->get();
