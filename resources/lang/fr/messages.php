@@ -9,7 +9,7 @@ return [
     'end_at' => 'Fin le ',
     'open' => 'Ouverte',
     'close' => 'Fermée',
-    'entries' => 'Vous avez actuellement {entries} sur {max_entries} participation(s).',
+    'entries' => 'Vous avez actuellement :entries sur :max_entries participation(s).',
     'participate' => 'Participer',
     'entry_added' => 'Participation correctement ajoutée !',
     'winners_list' => 'Liste des vainqueurs',

@@ -12,25 +12,26 @@ class DrawHomeController extends Controller
 {
     public function index()
     {
-        $activeDraws = Draw::query()
+        $query = Draw::query()
+            ->with([
+                'winners.user',
+            ])
             ->orderByDesc('pined')
             ->orderByDesc('is_open')
-            ->orderByDesc('created_at')
-            ->get();
+            ->orderByDesc('created_at');
 
-        $entries = collect();
-        $winners = collect();
+        if(Auth::check()) {
+            $userId = Auth::id();
 
-        if(Auth::user()) {
-            $userId = Auth::user()->id;
-            $entries = DrawEntries::where('user_id', $userId)->get();
-            $winners = DrawWinners::get()->groupBy('draw_id');
-        }
+            $query->with(['entries' => function ($q) use ($userId) {
+                $q->where('user_id', $userId);
+            }]);
+       }
+
+        $activeDraws = $query->get();
 
         return view('draw::index', [
             'activeDraws' => $activeDraws,
-            'entries' => $entries,
-            'winners' => $winners
         ]);
     }
 

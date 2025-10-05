@@ -34,6 +34,9 @@ return [
     'you_must_select_a_server' => 'Vous devez séléctionner au moins un serveur si vous ajoutez une commande.',
     'require_online' => 'Éxecuter la commande uniquement si le joueur est en ligne (Requiert AzLink)',
     'commands' => 'Utilisez {player} pour utiliser le nom du joueur. Pour les jeux Steam, vous pouvez utiliser {steam_id} ou {steam_id_32}. La commande ne doit pas commencer par \'/\'',
+    'manage_rewards' => 'Gérer les récompenses',
+    'new_reward' => 'Ajouter une nouvelle récompense',
+    'edit_rward' => 'Editer une récompense',
     'fields' => [
         'title' => 'Titre',
         'price' => 'Prix',

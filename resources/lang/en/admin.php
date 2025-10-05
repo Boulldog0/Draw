@@ -34,6 +34,9 @@ return [
     'you_must_select_a_server' => 'You must select minimum one server if you add a command.',
     'require_online' => 'Execute command only if player is online (Require AzLink)',
     'commands' => 'Use {player} to use the player\'s name. For Steam games, you can use {steam_id} or {steam_id_32}. Commande must not start with \'/\'',
+    'manage_rewards' => 'Manage rewards',
+    'new_reward' => 'Add new reward',
+    'edit_rward' => 'Edit reward',
     'fields' => [
         'title' => 'Title',
         'price' => 'Price',

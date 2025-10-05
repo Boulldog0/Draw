@@ -9,7 +9,7 @@ return [
     'end_at' => 'End at ',
     'open' => 'Open',
     'close' => 'Close',
-    'entries' => 'You have {entries} out of {max_entries} entrie(s)',
+    'entries' => 'You have :entries out of :max_entries entrie(s)',
     'participate' => 'Participate',
     'entry_added' => 'Entry correctly added !',
     'winners_list' => 'List of winners',

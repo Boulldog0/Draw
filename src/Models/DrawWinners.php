@@ -3,6 +3,7 @@
 namespace Azuriom\Plugin\Draw\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Azuriom\Models\User;
 
 class DrawWinners extends Model
 {
@@ -14,4 +15,9 @@ class DrawWinners extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

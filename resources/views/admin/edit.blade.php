@@ -8,102 +8,14 @@
         $now = Carbon::now()->format('Y-m-d\TH:i');
     @endphp
 
-    <style>
-        body {
-            background: linear-gradient(135deg, #1c1c2b, #2a2a3b);
-            color: #eaeaea;
-        }
-
-        .card {
-            background-color: rgba(33, 33, 50, 0.95);
-            border: 1px solid #3a3a4a;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-header {
-            background-color: transparent;
-            border-bottom: 1px solid #3a3a4a;
-        }
-
-        .form-control, .form-select {
-            background-color: #26263a;
-            border: 1px solid #444;
-            color: #fff;
-            border-radius: 8px;
-        }
-
-        .form-control:focus, .form-select:focus {
-            background-color: #2f2f44;
-            border-color: #5e5edc;
-            color: #fff;
-            box-shadow: none;
-        }
-
-        .form-label {
-            color: #ccc;
-        }
-
-        .input-group-text {
-            background-color: #33334d;
-            color: #fff;
-            border: 1px solid #444;
-        }
-
-        .btn-primary {
-            background-color: #5e5edc;
-            border-color: #5e5edc;
-        }
-
-        .btn-primary:hover {
-            background-color: #4848c4;
-            border-color: #4848c4;
-        }
-
-        .btn-secondary {
-            background-color: #3a3a4a;
-            border-color: #3a3a4a;
-        }
-
-        .btn-secondary:hover {
-            background-color: #4c4c5a;
-        }
-
-        .btn-warning {
-            background-color: #ffc107;
-            border-color: #ffc107;
-            color: #000;
-        }
-
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
-        }
-
-        .alert-warning {
-            background-color: #4d4d1f;
-            color: #f9f9b6;
-            border: 1px solid #777730;
-        }
-
-        hr {
-            border-top: 1px solid #444;
-        }
-
-        small.text-muted {
-            color: #aaa !important;
-        }
-    </style>
-
-    <div class="body card shadow-sm p-4">
-        <div class="card-header">
+    <div class="card shadow-sm border-0 p-4">
+        <div class="card-header bg-transparent border-bottom">
             <h5 class="mb-0">{{ isset($draw) ? trans('draw::admin.edit') : trans('draw::admin.create') }}</h5>
         </div>
 
         <div class="card-body mt-3">
             <form action="{{ isset($draw) ? route('draw.admin.draws.edit.submit', $draw) : route('draw.admin.draws.add.submit') }}" method="POST">
                 @csrf
-
                 @if(isset($draw) && !$draw->is_open)
                     <div class="alert alert-warning d-flex align-items-center gap-2">
                         <i class="bi bi-exclamation-triangle-fill"></i>
@@ -117,7 +29,6 @@
                         <div>{{ trans('draw::admin.cron_not_activated') }}</div>
                     </div>
                 @endif
-
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label for="title" class="form-label">{{ trans('draw::admin.fields.title') }}</label>
@@ -134,17 +45,15 @@
                         <small class="text-muted">{{ trans('draw::admin.placeholders.price') }}</small>
                     </div>
                 </div>
-
                 <div class="mb-3">
                     <label for="description" class="form-label">{{ trans('draw::admin.fields.description') }}</label>
                     <textarea class="form-control" name="description" id="description" rows="3">{{ old('description', $draw->description ?? '') }}</textarea>
                     <small class="text-muted">{{ trans('draw::admin.placeholders.description') }}</small>
                 </div>
-
                 <div class="row">
                     <div class="mb-3 col-md-4">
                         <label for="winners" class="form-label">{{ trans('draw::admin.fields.winners') }}</label>
-                        <input type="number" class="form-control" name="winners" id="winners" min="1" value="{{ old('winners', $draw->winners ?? 1) }}" required>
+                        <input type="number" class="form-control"  name="winners" id="winners" min="1" value="{{ old('winners', $draw->winners ?? 1) }}" required>
                         <small class="text-muted">{{ trans('draw::admin.placeholders.winners') }}</small>
                     </div>
 
@@ -156,17 +65,15 @@
 
                     <div class="mb-3 col-md-4">
                         <label for="max_entries_total" class="form-label">{{ trans('draw::admin.fields.max_entries_total') }}</label>
-                        <input type="number" class="form-control" name="max_entries_total" id="max_entries_total" min="0" value="{{ old('max_entries_total', $draw->max_entries ?? 0) }}" required>
+                        <input type="number" class="form-control"  name="max_entries_total" id="max_entries_total" min="0" value="{{ old('max_entries_total', $draw->max_entries ?? 0) }}" required>
                         <small class="text-muted">{{ trans('draw::admin.placeholders.max_entries_total') }}</small>
                     </div>
                 </div>
-
                 <div class="mb-3">
                     <label for="expires_at" class="form-label">{{ trans('draw::admin.fields.expires_at') }}</label>
                     <input type="datetime-local" class="form-control" name="expires_at" id="expires_at" value="{{ old('expires_at', isset($draw) ? $draw->expires_at->format('Y-m-d\TH:i') : '') }}" min="{{ $now }}" required>
                     <small class="text-muted">{{ trans('draw::admin.placeholders.expires_at') }}</small>
                 </div>
-
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label for="pined" class="form-label">{{ trans('draw::admin.fields.pined') }}</label>
@@ -176,15 +83,16 @@
                         </select>
                         <small class="text-muted">{{ trans('draw::admin.placeholders.pined') }}</small>
                     </div>
-
                     <div class="mb-3 col-md-6">
                         <label for="auto_send" class="form-label">{{ trans('draw::admin.fields.auto_send') }}</label>
-                        <select class="form-select" name="auto_send" id="auto_send" @if(!setting('draw.cron_activated', false)) disabled @endif>
+                        <select class="form-select"
+                                name="auto_send"
+                                id="auto_send"
+                                @if(!setting('draw.cron_activated', false)) disabled @endif>
                             <option value="0" @selected(old('auto_send', $draw->auto_send ?? false))>{{ trans('messages.yes') }}</option>
                             <option value="1" @selected(!old('auto_send', $draw->auto_send ?? false))>{{ trans('messages.no') }}</option>
                         </select>
                         <small class="text-muted">{{ trans('draw::admin.placeholders.auto_send') }}</small>
-
                         @if(!setting('draw.cron_activated', false))
                             <div class="alert alert-warning d-flex align-items-center gap-2 mt-2">
                                 <i class="bi bi-exclamation-triangle-fill"></i>
@@ -192,10 +100,9 @@
                             </div>
                         @endif
                     </div>
-
                     <div class="mb-3 col-md-6">
                         <label for="rewards" class="form-label">{{ trans('draw::admin.fields.rewards') }}</label>
-                        <select class="selectpicker form-control" id="rewards" name="rewards[]" multiple="" tabindex="null">
+                        <select class="form-select" id="rewards" name="rewards[]" multiple>
                             @php
                                 $selectedRewards = old('rewards', isset($draw) ? $draw->rewards->pluck('id')->toArray() : []);
                             @endphp
@@ -207,7 +114,7 @@
                         </select>
                         <small class="text-muted">{{ trans('draw::admin.placeholders.rewards') }}</small>
                     </div>
-
+                </div>
                 <div class="d-flex flex-wrap gap-2 mt-3">
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-save"></i> {{ trans('messages.actions.save') }}
@@ -217,7 +124,6 @@
                     </a>
                 </div>
             </form>
-
             @if(isset($draw))
                 <hr>
                 <div class="d-flex flex-wrap gap-2 mt-3">

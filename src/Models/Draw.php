@@ -37,6 +37,16 @@ class Draw extends Model
         return $this->belongsToMany(\Azuriom\Plugin\Draw\Models\DrawReward::class, 'draw_rewards_link', 'draw_id', 'reward_id');
     }
 
+    public function winners()
+    {
+        return $this->hasMany(DrawWinners::class, 'draw_id');
+    }
+
+    public function entries()
+    {
+        return $this->hasMany(DrawEntries::class, 'draw_id');
+    }
+
     public function close() 
     {
         $winners = $this->winners;

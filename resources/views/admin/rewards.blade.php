@@ -1,12 +1,12 @@
 @extends('admin.layouts.admin')
 
-@section('title', 'Récompenses')
+@section('title', trans('draw::admin.nav.rewards'))
 
 @section('content')
-    <h2 class="mb-4">Gérer les récompenses</h2>
+    <h2 class="mb-4">{{ trans('draw::admin.manage_rewards') }}</h2>
 
     <a href="{{ route('draw.admin.rewards.add') }}" class="btn btn-primary mb-3">
-        Nouvelle récompense
+        {{ trans('draw::admin.new_reward') }}
     </a>
 
     @if($rewards->isEmpty())
