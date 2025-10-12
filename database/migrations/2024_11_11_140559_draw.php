@@ -53,8 +53,8 @@ return new class extends Migration
         });
 
         Schema::create('draw_rewards_servers', function (Blueprint $table) {
-            $table->string('server_id');
-            $table->integer('reward_id');
+            $table->unsignedInteger('server_id');
+            $table->unsignedBigInteger('reward_id');
 
             $table->foreign('reward_id')->references('id')->on('draw_rewards')->cascadeOnDelete();
             $table->foreign('server_id')->references('id')->on('servers')->cascadeOnDelete();
@@ -63,8 +63,8 @@ return new class extends Migration
         });
 
         Schema::create('draw_rewards_link', function (Blueprint $table) {
-            $table->string('draw_id');
-            $table->integer('reward_id');
+            $table->unsignedBigInteger('draw_id');
+            $table->unsignedBigInteger('reward_id');
 
             $table->foreign('draw_id')->references('id')->on('draws')->cascadeOnDelete();
             $table->foreign('reward_id')->references('id')->on('draw_rewards')->cascadeOnDelete();
