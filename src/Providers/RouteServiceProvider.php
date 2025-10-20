@@ -21,10 +21,5 @@ class RouteServiceProvider extends BaseRouteServiceProvider
             ->prefix('admin/'.$this->plugin->id)
             ->name($this->plugin->id.'.admin.')
             ->group(plugin_path($this->plugin->id.'/routes/admin.php'));
-
-        Route::middleware('api')
-            ->prefix('api/'.$this->plugin->id)
-            ->name($this->plugin->id.'.api.')
-            ->group(plugin_path($this->plugin->id.'/routes/api.php'));
     }
 }
