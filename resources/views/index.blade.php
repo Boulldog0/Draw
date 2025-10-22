@@ -76,7 +76,7 @@
 
                                 <div class="d-flex justify-content-between align-items-center">
                                     <small class="text-muted">
-                                        {{ trans('draw::messages.entries', ['entries' => $user_entries, 'max_entries' => $max_entries]) }}
+                                        {{ trans('draw::messages.entries', ['entries' => $user_entries, 'max_entries' => $draw->$max_entries]) }}
                                     </small>
                                     <form action="{{ $link }}" method="POST" class="ms-2">
                                         @csrf
