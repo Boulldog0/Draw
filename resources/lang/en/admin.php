@@ -37,6 +37,8 @@ return [
     'manage_rewards' => 'Manage rewards',
     'new_reward' => 'Add new reward',
     'edit_rward' => 'Edit reward',
+    'draw_correctly_stopped' => 'Draw correctly stopped !',
+    'draw_correctly_restart' => 'Draw correctly restart !',
     'fields' => [
         'title' => 'Title',
         'price' => 'Price',

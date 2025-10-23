@@ -37,6 +37,8 @@ return [
     'manage_rewards' => 'Gérer les récompenses',
     'new_reward' => 'Ajouter une nouvelle récompense',
     'edit_rward' => 'Editer une récompense',
+    'draw_correctly_stopped' => 'Tombola correctement stoppée !',
+    'draw_correctly_restart' => 'Tombola correctement relancée !',
     'fields' => [
         'title' => 'Titre',
         'price' => 'Prix',

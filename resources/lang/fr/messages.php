@@ -15,6 +15,7 @@ return [
     'winners_list' => 'Liste des vainqueurs',
     'price' => 'Prix :',
     'pined' => 'Épinglé',
+    'unlimited' => 'illimité',
     'errors' => [
         'draw_not_found' => 'Tombola non trouvée !',
         'must_be_authentificated' => 'Vous devez être authentifié !',

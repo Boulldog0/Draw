@@ -53,7 +53,7 @@ class AdminController extends Controller
 
         $now = now();
 
-        Draw::create([
+        $draw = Draw::create([
             'name' => $title,
             'description' => $desc,
             'submitter' => $submitter,
@@ -69,7 +69,7 @@ class AdminController extends Controller
             'updated_at' => $now,
         ]);
 
-        Draw::where('created_at', $now)->rewards()->sync($request->input('rewards', []));
+        $draw->rewards()->sync($request->input('rewards', []));
 
         return redirect()
             ->route('draw.admin.index')
@@ -193,6 +193,29 @@ class AdminController extends Controller
         return redirect()
             ->back()
             ->with('success', trans('draw::admin.draw_correctly_closed'));
+    }
+
+    public function stop($id)
+    {
+        $draw = Draw::find($id);
+
+        if(!$draw) {
+            return redirect()
+                ->back()
+                ->with('error', trans('draw::admin.errors.draw_not_found'));
+        }
+    
+        $draw->update([
+            'is_open' => !$draw->is_open,
+        ]);
+
+        return redirect()
+            ->back()
+            ->with('success',
+                $draw->is_open
+                    ? trans('draw::admin.draw_correctly_restart')
+                    : trans('draw::admin.draw_correctly_stopped')
+            );
     }
 
     public function replay($id) 

@@ -15,6 +15,7 @@ return [
     'winners_list' => 'List of winners',
     'price' => 'Price :',
     'pined' => 'Pined',
+    'unlimited' => 'unlimited',
     'errors' => [
         'draw_not_found' => 'Draw not found !',
         'must_be_authentificated' => 'You must be authentificated !',

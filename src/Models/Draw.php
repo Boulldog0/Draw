@@ -20,6 +20,7 @@ class Draw extends Model
         'max_entries_per_player',
         'price',
         'closed',
+        'is_open',
         'winners',
         'pined',
         'automatic_draw',
@@ -29,6 +30,8 @@ class Draw extends Model
     ];
 
     protected $casts = [
+        'is_open' => 'boolean',
+        'pined' => 'boolean',
         'expires_at' => 'datetime',
     ];
 
