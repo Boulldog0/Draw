@@ -4,6 +4,7 @@ namespace Azuriom\Plugin\Draw\Providers;
 
 use Azuriom\Extensions\Plugin\BasePluginServiceProvider;
 use Azuriom\Models\Permission;
+use Azuriom\Models\Setting;
 use Azuriom\Plugin\Draw\Commands\CronTasks;
 use Illuminate\Console\Scheduling\Schedule;
 
@@ -81,6 +82,9 @@ class DrawServiceProvider extends BasePluginServiceProvider
             'draw.manage' => 'draw::admin.permissions.manage',
             'draw.create_draw' => 'draw::admin.permissions.create',
         ]);
+
+        // embed fields setting is stored as json
+        Setting::markAsJsonEncoded('draw.discord_embed_fields');
     }
 
     protected function schedule(Schedule $schedule): void
@@ -117,6 +121,7 @@ class DrawServiceProvider extends BasePluginServiceProvider
                     'draw.admin.index' => trans('draw::admin.nav.draws'),
                     'draw.admin.draws.add' => trans('draw::admin.nav.create'),
                     'draw.admin.rewards' => trans('draw::admin.nav.rewards'),
+                    'draw.admin.draws.discord_webhook' => trans('draw::admin.discord_webhook'),
                 ],
                 'permission' => 'draw.manage'
             ],

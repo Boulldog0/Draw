@@ -39,6 +39,9 @@ return [
     'edit_rward' => 'Edit reward',
     'draw_correctly_stopped' => 'Draw correctly stopped !',
     'draw_correctly_restart' => 'Draw correctly restart !',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'add_field' => 'Add field',
     'fields' => [
         'title' => 'Title',
         'price' => 'Price',
@@ -58,6 +61,13 @@ return [
         'commands' => 'Commands',
         'servers' => 'Servers',
         'rewards' => 'Rewards',
+        'had_win' => 'Had win',
+        'discord_webhook_link' => 'Discord webhook link',
+        'embed_title' => 'Embed title',
+        'embed_description' => 'Embed description',
+        'embed_color' => 'Embed color (hexadecimal)',
+        'embed_footer' => 'Embed footer',
+        'fields_container' => 'Embed fields',
     ],
 
     'nav' => [
@@ -72,6 +82,10 @@ return [
         'not_enought_entries' => 'Not enought entries for this draw !',
     ],
 
+    'info' => [
+        'discord_webhook' => 'In the next fields, use {winners} to use winner\'s username (in format user1, user2, user3, ...); {draw_name} to use draw name.'
+    ],
+
     'placeholders' => [
         'title' => 'Title shown for users (ex : "Draw of july")',
         'description' => 'Draw description. Can contain rewards, rules, etc.',
@@ -84,6 +98,13 @@ return [
         'pined' => 'If yes, this draw will be placed (with all pined draws) before not pined draws.',
         'auto_send_disabled' => 'Auto send & auto close is disable because of you\'r cron tasks that are disabled.',
         'rewards' => 'Define rewards given to users when they won. Caution : if you reroll the draw, rewards of old winners cannot been removed.',
-        'servers' => 'Define the servers where rewards\'s commands will be executed.'
+        'servers' => 'Define the servers where rewards\'s commands will be executed.',
+        'field_name' => 'Field name',
+        'field_value' => 'Field value',
+        'discord_webhook' => 'Discord webhook link',
+        'embed_title' => 'Embed title',
+        'embed_description' => 'Embed description',
+        'embed_color' => 'Embed color (hexadecimal)',
+        'embed_footer' => 'Embed footer',
     ],
 ];

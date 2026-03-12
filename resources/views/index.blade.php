@@ -17,9 +17,8 @@
                     @foreach($activeDraws as $draw)
                         @php
                             $user_entries = $draw->entries->count();
-                            $drawWinners = $draw->winners;
                             $link = str('/draw/' . $draw->id . '/participate');
-                            $drawWinners = $winners[$draw->id] ?? collect();
+                            $drawWinners = $winners[$draw->id] ?? $draw->getWinners();
                         @endphp
 
                         <div class="card mb-4 shadow-sm border-0">
@@ -63,7 +62,7 @@
 
                                 <p class="mt-3 mb-3">{{ $draw->description }}</p>
 
-                                @if($draw->closed && $drawWinners->isNotEmpty())
+                                @if($draw->closed)
                                     <div class="mt-3">
                                         <strong>{{ trans('draw::messages.winners_list') }}:</strong>
                                         <ul class="list-unstyled mb-2">
@@ -76,7 +75,7 @@
 
                                 <div class="d-flex justify-content-between align-items-center">
                                     <small class="text-muted">
-                                        {{ trans('draw::messages.entries', ['entries' => $user_entries, 'max_entries' => $draw->max_entries]) }}
+                                        {{ trans('draw::messages.entries', ['entries' => $user_entries, 'max_entries' => ($draw->max_entries_per_player == 0 ? trans('draw::messages.unlimited') : $draw->max_entries_per_player)]) }}
                                     </small>
                                     <form action="{{ $link }}" method="POST" class="ms-2">
                                         @csrf

@@ -6,7 +6,6 @@ use Azuriom\Http\Controllers\Controller;
 use Azuriom\Plugin\Draw\Models\Draw;
 use Illuminate\Support\Facades\Auth;
 use Azuriom\Plugin\Draw\Models\DrawEntries;
-use Azuriom\Plugin\Draw\Models\DrawWinners;
 
 class DrawHomeController extends Controller
 {

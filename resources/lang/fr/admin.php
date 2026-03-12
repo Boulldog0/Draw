@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'discord_webhook' => 'Webhook Discord',
+    'discord_webhook_saved' => 'Paramètres du webhook Discord sauvegardés !',
     'title' => 'Tombolas',
     'manage' => 'Gestion des tombolas',
     'create' => 'Créer une tombola',
@@ -25,7 +27,7 @@ return [
     'delete' => 'Supprimer la tombola',
     'close' => 'Fermer la tombola',
     'confirm_replay' => 'S\'il vous plait confirmez votre action. Si vous la confirmez, les anciens vainqueurs vont être retirés et de nouveaux vainqueurs vont être désignés.',
-    'draw_correctly_replayed' => 'La tombola à correctement été supprimée ! Les anciens vainqueurs ont étés supprimés.',
+    'draw_correctly_replayed' => 'La tombola à correctement été relancée ! Les anciens vainqueurs ont étés supprimés.',
     'stop_draw' => 'Arrêter/Reprendre la tombola',
     'draw_stopped' => 'Cette tombola est actuellement arrêtée ! Les utilisateurs ne peuvent pas y participer.',
     'cron_not_activated' => 'Les tâches cron ne sont pas activées. Si vous venez juste d\'activer le plugin pour la première fois, attendez une minute.',
@@ -39,7 +41,12 @@ return [
     'edit_rward' => 'Editer une récompense',
     'draw_correctly_stopped' => 'Tombola correctement stoppée !',
     'draw_correctly_restart' => 'Tombola correctement relancée !',
+    'yes' => 'Oui',
+    'no' => 'Non',
     'fields' => [
+        'embed_color' => 'Couleur',
+        'embed_footer' => 'Footer',
+        'embed_fields' => 'Champs',
         'title' => 'Titre',
         'price' => 'Prix',
         'winners' => 'Gagnants',
@@ -58,6 +65,11 @@ return [
         'commands' => 'Commandes',
         'servers' => 'Serveurs',
         'rewards' => 'Récompenses',
+        'had_win' => 'A gagné',
+        'discord_webhook_link' => 'Lien du webhook Discord',
+        'embed_title' => 'Titre de l\'embed',
+        'embed_description' => 'Description de l\'embed',
+        'fields_container' => 'Champs de l\'embed',
     ],
 
     'nav' => [
@@ -72,7 +84,14 @@ return [
         'not_enought_entries' => 'Pas assez de participations pour cette tombola !',
     ],
 
+    'info' => [
+        'discord_webhook' => 'Dans les prochains champs, utilisez {winners} pour utiliser le nom des vaiqueurs (dans le format utilisateur1, utilisateur2, utilisateur3, ...); {draw_name} pour utiliser le nom de la tombola.'
+    ],
+
     'placeholders' => [
+        'embed_color' => 'Couleur d\'embed en hex (ex: #FF0000)',
+        'embed_footer' => 'Texte du footer',
+        'embed_fields' => 'Liste de champs supplémentaires',
         'title' => 'Titre visible par les utilisateurs (ex : "Tirage de juillet")',
         'description' => 'Description du tirage. Peut contenir les récompenses, les règles, etc.',
         'price' => 'Coût d\'une participation en monnaie du site (0 = gratuit)',
@@ -84,6 +103,11 @@ return [
         'pined' => 'Si oui, cette tombola sera placée (avec toutes les autres tombolas épinglées) devant les tombolas non épinglées.',
         'auto_send_disabled' => 'L\'envoi automatique & la fermeture automatique sont désactivés à cause des tâches cron qui sont désactivées.',
         'rewards' => 'Défini les récompenses donnés aux utilisateurs gagnants. Attention : si vous relancer la tombola, les récompenses des anciens vainqueurs ne pourront pas être supprimés.',
-        'servers' => 'Défini les serveurs où les commandes de la récompense vont être executés.'
+        'servers' => 'Défini les serveurs où les commandes de la récompense vont être executés.',
+        'field_name' => 'Nom du champ',
+        'field_value' => 'Valeur du champ',
+        'discord_webhook' => 'Lien du webhook Discord',
+        'embed_title' => 'Titre de l\'embed',
+        'embed_description' => 'Description de l\'embed',
     ],
 ];

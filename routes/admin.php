@@ -27,6 +27,9 @@ Route::post('/{id}/delete', [AdminController::class, 'delete'])->name('draws.del
 Route::get('/add', [AdminController::class, 'add'])->name('draws.add');
 Route::post('/add/submit', [AdminController::class, 'add_submit'])->name('draws.add.submit');
 
+Route::get('/discord/webhook', [AdminController::class, 'discordWebhook'])->name('draws.discord_webhook');
+Route::post('/discord/webhook/submit', [AdminController::class, 'discordWebhookSubmit'])->name('draws.discord_webhook.submit');
+
 Route::get('/rewards', [RewardsController::class, 'index'])->name('rewards');
 Route::get('/reward/add', [RewardsController::class, 'add'])->name('rewards.add');
 Route::post('/reward/add/submit', [RewardsController::class, 'add_submit'])->name('rewards.add.submit');

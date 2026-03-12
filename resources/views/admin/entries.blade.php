@@ -5,6 +5,7 @@
 @section('content')
     @php
         use Azuriom\Models\User;
+        use Azuriom\Plugin\Draw\Models\DrawWinners;
     @endphp
     <div class="mb-4">
         <h2 class="h5">{{ $draw->name }} (# {{ $draw->id }})</h2>
@@ -23,6 +24,7 @@
                         <th>#</th>
                         <th>{{ trans('draw::admin.fields.user') }}</th>
                         <th>{{ trans('draw::admin.fields.entries') }}</th>
+                        <th>{{ trans('draw::admin.fields.had_win') }}</th>
                         <th>{{ trans('draw::admin.fields.date') }}</th>
                     </tr>
                 </thead>
@@ -32,6 +34,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ User::find($userId)->name ?? '#' . $userId }}</td>
                             <td>{{ $userEntries->count() }}</td>
+                            <td>{{ DrawWinners::where('user_id', $userId)->where('draw_id', $draw->id)->exists() ? trans('draw::admin.yes') : trans('draw::admin.no') }}</td>
                             <td>{{ $userEntries->first()->created_at->format('d/m/Y H:i') }}</td>
                         </tr>
                     @endforeach

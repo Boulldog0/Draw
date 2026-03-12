@@ -10,8 +10,7 @@ use Azuriom\Plugin\Draw\Models\DrawWinners;
 use Azuriom\Plugin\Draw\Models\DrawReward;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Azuriom\Models\User;
-use Azuriom\Notifications\AlertNotification;
+use Azuriom\Models\Setting;
 
 class AdminController extends Controller
 {
@@ -262,5 +261,43 @@ class AdminController extends Controller
         return redirect()
             ->back()
             ->with('success', trans('draw::admin.draw_correctly_deleted'));
+    }
+
+    public function discordWebhook()
+    {
+        return view('draw::admin.discord_webhook')->with([
+            'settings' => json_decode(setting('draw_discord_webhook', '{}'), true),
+        ]);
+    }
+
+    public function discordWebhookSubmit(Request $request)
+    {
+        $fieldsInput = $request->input('fields', []);
+        $fields = [];
+        if (is_array($fieldsInput)) {
+            foreach ($fieldsInput as $f) {
+                if (isset($f['name']) && trim($f['name']) !== '') {
+                    $fields[] = [
+                        'name'  => trim($f['name']),
+                        'value' => isset($f['value']) ? trim($f['value']) : '',
+                    ];
+                }
+            }
+        }
+
+        $settings = json_encode([
+            'discord_webhook' => $request->input('discord_webhook'),
+            'embed_title' => $request->input('embed_title'),
+            'embed_description' => $request->input('embed_description'),
+            'embed_color' => $request->input('embed_color'),
+            'embed_footer' => $request->input('embed_footer'),
+            'fields_container' => $fields,
+        ], JSON_UNESCAPED_SLASHES);
+
+        Setting::updateSettings('draw_discord_webhook', $settings);
+
+        return redirect()
+            ->route('draw.admin.draws.discord_webhook')
+            ->with('success', trans('draw::admin.discord_webhook_saved'));
     }
 }
